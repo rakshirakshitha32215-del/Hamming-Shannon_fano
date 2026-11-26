@@ -6,54 +6,40 @@ Show that by drawing the tree diagram, and
 Calculate the average code word length, entropy, variance, redundancy, and efficiency.
 # Tools Required:
 # Program:
-```
-#Huffman and Shannon-Fano coding
-import numpy as np
-import math 
-L  = 0
-hs = 0
-p = []
-lk = []
-n = int(input("Enter the number of Samples : "))
-for i in range (n): 
-    pr = float(input(f"Enter the probability of sample values {i + 1}: "))  
-    p.append(pr)
-for j in range (n): 
-    l = float(input(f"Enter the length of the sample values {j + 1}: "))  
-    lk.append(l)
-# Avg length of the code word
-for k in range (n):
-    Avg1 = p[k] * lk[k]
-    L = L + Avg1
-# Entropy
-for k in range (n):
-    e = p[k] * math.log(1 / p[k], 2)
-    hs = hs + e
-hs = round(hs,3)
-# Efficiency
-eff =  hs / L
-eff = round(eff,3)
-# Redundancy 
-red =  round(1 - eff,3) 
-# Variance
-var = 0
-for k in range(n):
-    var1 = p[k] * (lk[k]-L)**2
-    var = var + var1
-var = round(var,3)
-print(f"Average Codeword Length is : {L}")
-print(f"Entropy is : {hs}")
-print(f"Efficiency is : {eff}")
-print(f"Redudancy is : {red}")
-print(f"Variance is : {var}") 
-```
+    import math
+
+    p = [0.4, 0.19, 0.16, 0.15, 0.15]
+    lk = [3, 4, 2, 4, 3, 3, 2]
+    n = len(p)
+
+     L = sum(p[k] * lk[k] for k in range(n))
+    hs = sum(p[k] * math.log(1 / p[k], 2) for k in range(n))
+    hs = round(hs, 3)
+
+    eff = round(hs / L, 3)
+    red = round(1 - eff, 3)
+
+    var = sum(p[k] * (lk[k] - L) ** 2 for k in range(n))
+    var = round(var, 3)
+
+    print(f"Average Codeword Length is : {L}")
+    print(f"Entropy is : {hs}")
+    print(f"Efficiency is : {eff * 100}%")
+    print(f"Redundancy is : {red}")
+    print(f"Variance is : {var}")
+
+
 # Calculation:
-<img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/0c7b74e5-8f95-4a45-b89d-e02593d561ae" />
-<img width="900" height="1600" alt="image" src="https://github.com/user-attachments/assets/a223e8fb-9a03-499e-be44-0a2c4b54305e" />
+<img width="1233" height="1600" alt="image" src="https://github.com/user-attachments/assets/7cf3f535-287c-4c5c-a45b-061a123815ec" />
+
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/3c2a6926-f580-46f5-be3c-73a851f4a5e8" />
+
+<img width="1285" height="1600" alt="image" src="https://github.com/user-attachments/assets/59191854-ce39-4090-8804-6648c414e888" />
+
+
 
 # Output
+<img width="477" height="108" alt="image" src="https://github.com/user-attachments/assets/829c796c-8174-4d35-bb89-48d7414c1f8a" />
 
-<img width="537" height="355" alt="image" src="https://github.com/user-attachments/assets/9823685c-ca72-4d7b-aa85-8615cbe7d96c" />
- 
 # Results:
-Huffman and Shannon-Fano coding methods were implemented on the provided source. Calculations for average codeword length, entropy, variance, redundancy, and coding efficiency have been carried out successfully
+The Huffman and Shannon-Fano of the given statistics {0.4, 0.19, 0.16, 0.15, 0.15} using python are verified.
